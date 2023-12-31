@@ -1,4 +1,4 @@
-package shop.app.helper;
+package com.blog.helper;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MethodArgumentNotValidException;

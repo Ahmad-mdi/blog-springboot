@@ -1,9 +1,12 @@
 package com.blog.entity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Entity
+@Table(name="posts")
 @Data
 public class Post {
     @Id
@@ -16,4 +19,11 @@ public class Post {
     private String image;
     @NotNull(message = "the body failed is required")
     private String body;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    @JsonIgnore
+    private User user;
+    /*@OneToMany(mappedBy = "post")
+    private List<User> user;*/
+
 }

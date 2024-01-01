@@ -1,7 +1,7 @@
 package com.blog.controller;
 
 import com.blog.entity.Post;
-import com.blog.helper.ResponseStatus;
+import com.blog.helper.enums.ResponseStatus;
 import com.blog.helper.ServiceApiResponse;
 import com.blog.service.PostService;
 import lombok.AllArgsConstructor;
@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/post")
@@ -66,4 +65,13 @@ public class PostController {
             return new ServiceApiResponse<>(e);
         }
     }
+@DeleteMapping("/delete/{id}")
+    public ServiceApiResponse<Post> delete(@PathVariable long id){
+        try {
+            String data = service.delete(id);
+            return new ServiceApiResponse<>(data,ResponseStatus.SUCCESS);
+        }catch (Exception e){
+            return new ServiceApiResponse<>(e);
+        }
+}
 }

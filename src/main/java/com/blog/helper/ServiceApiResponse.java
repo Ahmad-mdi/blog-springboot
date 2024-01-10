@@ -1,5 +1,6 @@
 package com.blog.helper;
 
+import com.blog.helper.enums.ResponseStatus;
 import lombok.Data;
 
 import java.io.Serializable;

@@ -5,16 +5,14 @@ import com.blog.helper.ServiceApiResponse;
 import com.blog.helper.enums.ResponseStatus;
 import com.blog.helper.utils.JwtTokenUtil;
 import com.blog.helper.utils.SecurityUtils;
+import com.blog.repository.UserRepository;
 import com.blog.service.UserService;
-import dto.UserDto;
+import com.blog.dto.UserDto;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @AllArgsConstructor
 @RestController
@@ -23,6 +21,12 @@ public class UserController {
     private final UserService service;
     private final JwtTokenUtil jwtTokenUtil;
     private final SecurityUtils securityUtils;
+
+    @GetMapping("/getAll")
+    public ServiceApiResponse<User> getAll() {
+        List<User> dataList = service.findAll();
+        return new ServiceApiResponse<>(dataList, ResponseStatus.SUCCESS);
+    }
 
     @PostMapping("/login")
     public ServiceApiResponse<UserDto> login(@RequestBody User user) {

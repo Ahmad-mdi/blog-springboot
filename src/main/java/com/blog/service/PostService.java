@@ -41,7 +41,7 @@ public class PostService {
         try {
             if (post.getTitle().isEmpty() || post.getImage().isEmpty() || post.getBody().isEmpty())
                 throw new Exception("please complete filed!");
-            Post oldPost = repository.findById(post.getId()).orElse(null);
+            Post oldPost = repository.findById(post.getPid()).orElse(null);
             assert oldPost != null;
             oldPost.setTitle(post.getTitle());
             oldPost.setImage(post.getImage());
@@ -50,5 +50,10 @@ public class PostService {
         } catch (DataIntegrityViolationException e) {
             throw new Exception("the title has already been taken!", e);
         }
+    }
+
+    public String delete(long id) {
+        repository.deleteById(id);
+        return "removed post" + ": " + id;
     }
 }

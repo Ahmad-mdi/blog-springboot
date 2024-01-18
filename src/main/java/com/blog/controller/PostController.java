@@ -2,10 +2,8 @@ package com.blog.controller;
 
 
 import com.blog.entity.Post;
-import com.blog.entity.Student;
 import com.blog.helper.enums.ResponseStatus;
 import com.blog.helper.ServiceApiResponse;
-import com.blog.repository.StudentRepository;
 import com.blog.service.PostService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;

@@ -20,7 +20,7 @@ public class UserDto {
     private UserRole role;
     private String token;
 
-    public UserDto (User user){
+    public UserDto(User user){
         setId(user.getId());
         setEmail(user.getEmail());
         setName(user.getName());
